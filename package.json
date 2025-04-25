@@ -16,6 +16,7 @@
     "lint": "turbo run lint",
     "dev": "vite ./apps/demo",
     "dev:turbo": "turbo run dev",
+    "start": "concurrently \"node services/messages/dist/index.js\" \"npm run dev\"",
     "preview": "vite preview",
     "wait": "node scripts/wait.js",
     "check-types": "turbo run check-types"
