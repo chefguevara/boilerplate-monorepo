@@ -1,0 +1,38 @@
+{
+  "name": "@chefguevara/types",
+  "version": "1.0.29",
+  "main": "dist/index.js",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    },
+    "./types": {
+      "import": "./dist/types/index.js",
+      "types": "./dist/types/index.d.ts"
+    },
+    "./constants": {
+      "import": "./dist/constants/index.js",
+      "types": "./dist/constants/index.d.ts"
+    }
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "eslint": "^9.24.0",
+    "rimraf": "^6.0.1",
+    "typescript": "^5.8.2",
+    "vite": "^6.2.0",
+    "vite-plugin-dts": "^4.5.3"
+  },
+  "scripts": {
+    "vite": "npm run clean && vite build",
+    "clean": "rimraf dist",
+    "tsc": "npm run clean && tsc -b",
+    "build": "npm run clean && vite build",
+    "lint:fix": "eslint --fix \"./**/*.{js,jsx,ts,tsx}\""
+  }
+}

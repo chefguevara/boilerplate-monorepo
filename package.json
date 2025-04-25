@@ -1,0 +1,52 @@
+{
+  "name": "@chefguevara/boilerplate-monorepo",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build:packages": "tsc -b packages/*/tsconfig.json",
+    "build:services": "tsc -b services/*/tsconfig.json",
+    "build:apps": "tsc -b apps/*/tsconfig.json",
+    "build": "turbo run build",
+    "preversion": "npm run lint && npm run build",
+    "version": "npm run bundle && git add dist package*.json && git commit -m \"chore: bump version to v$npm_package_version\"",
+    "lint": "turbo run lint",
+    "dev": "vite ./apps/demo",
+    "dev:turbo": "turbo run dev",
+    "preview": "vite preview",
+    "wait": "node scripts/wait.js",
+    "check-types": "turbo run check-types"
+  },
+  "devDependencies": {
+    "@eslint/compat": "^1.2.6",
+    "@eslint/js": "^9.24.0",
+    "@rollup/plugin-typescript": "^12.1.2",
+    "@stylistic/eslint-plugin": "^4.2.0",
+    "@typescript-eslint/eslint-plugin": "^8.25.0",
+    "concurrently": "^9.1.2",
+    "eslint": "^9.24.0",
+    "eslint-import-resolver-typescript": "^4.3.2",
+    "eslint-plugin-import": "^2.31.0",
+    "eslint-plugin-only-warn": "^1.1.0",
+    "eslint-plugin-turbo": "^2.5.0",
+    "globals": "^16.0.0",
+    "turbo": "^2.5.0",
+    "typescript": "^5.7.3",
+    "typescript-eslint": "^8.29.0",
+    "vite": "^6.2.0",
+    "vite-plugin-dts": "^4.5.3",
+    "vite-tsconfig-paths": "^5.1.4"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "packageManager": "npm@10.7.0",
+  "workspaces": [
+    "packages/*",
+    "services/*",
+    "apps/*"
+  ]
+}

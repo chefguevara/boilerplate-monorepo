@@ -1,0 +1,53 @@
+{
+  "$schema": "https://turbo.build/schema.json",
+  "ui": "tui",
+  "tasks": {
+    "@chefguevara/types#build": {
+      "dependsOn": [],
+      "outputs": [
+        "dist/**"
+      ]
+    },
+    "@chefguevara/messages#build": {
+      "cache": false,
+      "dependsOn": [
+        "^pause",
+        "^@chefguevara/types#build"
+      ],
+      "outputs": [
+        "dist/**"
+      ]
+    },
+    "@chefguevara/demo#build": {
+      "dependsOn": [
+        "^@chefguevara/types#build",
+        "^@chefguevara/messages#build"
+      ],
+      "outputs": [
+        "dist/**"
+      ]
+    },
+    "lint": {
+      "dependsOn": [
+        "^lint"
+      ]
+    },
+    "pause": {
+      "dependsOn": [
+        "^wait"
+      ]
+    },
+    "test": {
+      "outputs": [
+        "coverage/**"
+      ],
+      "dependsOn": [
+        "build"
+      ]
+    },
+    "dev": {
+      "cache": true,
+      "persistent": true
+    }
+  }
+}
